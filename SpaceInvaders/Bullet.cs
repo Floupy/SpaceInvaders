@@ -29,7 +29,7 @@ namespace SpaceInvaders
         private void InitializeTimerMove()
         {
             timerMove = new Timer();
-            timerMove.Interval = 10;
+            timerMove.Interval = 20;
             timerMove.Tick += TimerMove_Tick;
             timerMove.Start();
         }
@@ -38,6 +38,15 @@ namespace SpaceInvaders
         private void TimerMove_Tick(object sender, EventArgs e)
         {
             this.Top -= step;
+            DisposeIfNotVisible();
+        }
+
+        private void DisposeIfNotVisible()
+        {
+            if(this.Top + this.Height < 0)
+            {
+                this.Dispose();
+            }
         }
     }
 }
