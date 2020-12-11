@@ -41,6 +41,15 @@ namespace SpaceInvaders
             {
                 FireBullet();
             }
+
+            if(e.KeyCode == Keys.Right)
+            {
+                SpaceshipMoveRight();
+            }
+            else if(e.KeyCode == Keys.Left)
+            {
+                SpaceshipMoveleft();
+            }
         }
 
         private void FireBullet()
@@ -51,5 +60,35 @@ namespace SpaceInvaders
             this.Controls.Add(bullet);
         }
 
+        private void SpaceshipMoveleft()
+        {
+
+            if(spaceship.Left == 5)
+            {
+                spaceship.Left -= 0;
+            }
+            else
+            {
+                spaceship.Left -= 5;
+            }
+            
+
+        }
+
+        private void SpaceshipMoveRight()
+        {
+            if(spaceship.Left == 740)
+            {
+                spaceship.Left += 0;
+            }
+            else
+            {
+                spaceship.Left += 5;
+            }
+              
+         
+        }
+
+        
     }
 }
