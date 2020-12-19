@@ -12,7 +12,15 @@ namespace SpaceInvaders
     {
         public Enemy()
         {
-
+            InitializeEnemy();
         }
+
+        private void InitializeEnemy()
+        {
+            this.BackColor = Color.Red;
+            this.Width = 40;
+            this.Height = 40;
+        }
+
     }
 }

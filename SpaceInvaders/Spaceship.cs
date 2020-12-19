@@ -14,6 +14,8 @@ namespace SpaceInvaders
 
         public int HorVelocity { get; set; } = 0;
 
+        public List<Bullet> bullets = new List<Bullet>();
+
         private bool canFire = true;
         private Game game = null;
         private Timer timerCooldown = null;
@@ -44,6 +46,7 @@ namespace SpaceInvaders
             bullet.Left = this.Left + 30;
             bullet.Top = this.Top - bullet.Height;
             game.Controls.Add(bullet);
+            bullets.Add(bullet);
             canFire = false;
             InitializeTimerCooldown();
 
@@ -87,6 +90,20 @@ namespace SpaceInvaders
             {
                 this.HorVelocity = -this.HorVelocity;
             }
+        }
+
+        public void MoveRight()
+        {
+            this.HorVelocity = 2;
+        }
+        public void MoveLeft()
+        {
+
+            this.HorVelocity = -2;
+        }
+        public void MoveStop()
+        {
+            this.HorVelocity = 0;
         }
     }
 
