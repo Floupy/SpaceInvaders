@@ -35,6 +35,7 @@
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(834, 461);
+            this.DoubleBuffered = true;
             this.MaximumSize = new System.Drawing.Size(1000, 500);
             this.Name = "Game";
             this.Text = "Form1";
