@@ -28,7 +28,7 @@ namespace SpaceInvaders
             this.KeyDown += Game_KeyDown;
             this.BackColor = Color.Black;
             AddSpaceshipToGame();
-            AddEnemyToGame(3, 8);
+            AddEnemyToGame(4, 13);
         }
 
         private void AddSpaceshipToGame()
@@ -44,13 +44,13 @@ namespace SpaceInvaders
         {
             Enemy enemy = null;
 
-            for(int rowCounter = 0; rowCounter < 3; rowCounter++)
+            for(int rowCounter = 0; rowCounter < 4; rowCounter++)
             {
-                for (int colCounter = 0; colCounter < 8; colCounter++)
+                for (int colCounter = 0; colCounter < 13; colCounter++)
                 {
                     enemy = new Enemy();
-                    enemy.Left = 20 + 60 * colCounter;
-                    enemy.Top = 20 + 60 * rowCounter;
+                    enemy.Left = 20 + 55 * colCounter;
+                    enemy.Top = 20 + 55 * rowCounter;
                     this.Controls.Add(enemy);
                     enemies.Add(enemy);
                 }
@@ -99,8 +99,11 @@ namespace SpaceInvaders
                 {
                     if (bullet.Bounds.IntersectsWith(enemy.Bounds))
                     {
-                        enemy.Dispose();
+                        enemy.Explode();                   
                         bullet.Dispose();
+                        
+                        bullet.Top = 0;
+                        
                     }
                 }
             }

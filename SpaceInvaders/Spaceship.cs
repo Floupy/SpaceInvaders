@@ -5,6 +5,7 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Drawing;
+using SpaceInvaders.Properties;
 
 namespace SpaceInvaders
 {
@@ -17,24 +18,29 @@ namespace SpaceInvaders
         public List<Bullet> bullets = new List<Bullet>();
 
         private bool canFire = true;
+        private int imageCount = 0;
+
         private Game game = null;
         private Timer timerCooldown = null;
         private Timer timerMove = null;
+        private Timer timerAnimate = null;
+
 
         public Spaceship(Game gameForm)
         {
             game = gameForm;
             InitializeSpaceship();
             InitializeTimerMove();
-
+            InitializeTimerAnimate();
         }
 
         private void InitializeSpaceship()
         {
             this.Height = 100;
             this.Width = 60;
-            this.BackColor = Color.SteelBlue;
-            
+            this.BackColor = Color.Transparent;
+            this.SizeMode = PictureBoxSizeMode.StretchImage;
+        
         }
 
 
@@ -75,7 +81,7 @@ namespace SpaceInvaders
         }
 
         private void TimerMove_Tick(object sender, EventArgs e)
-        {        
+        {
             this.Left += this.HorVelocity;
             CheckSpaceshipLocation();
         }
@@ -105,7 +111,28 @@ namespace SpaceInvaders
         {
             this.HorVelocity = 0;
         }
-    }
 
+        private void InitializeTimerAnimate()
+        {
+            timerAnimate = new Timer();
+            timerAnimate.Interval = 75;
+            timerAnimate.Tick += TimerAnimate_Tick;
+            timerAnimate.Start();
+        }
+
+        private void TimerAnimate_Tick(object sender, EventArgs e)
+        {
+            SpaceshipAnimateRotation();
+        }
+
+        private void SpaceshipAnimateRotation()
+        {
+            string imageName = "rocket_off_" + imageCount.ToString("000");
+            this.Image = (Image)Resources.ResourceManager.GetObject(imageName);
+            imageCount += 1;
+            if (imageCount > 3) imageCount = 0;
+        }
+
+    }
 }
 

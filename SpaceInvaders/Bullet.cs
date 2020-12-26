@@ -10,7 +10,7 @@ namespace SpaceInvaders
 {
     class Bullet : PictureBox
     {
-        private int step = 2;
+        private int step = 4;
         private Timer timerMove = null;
 
         public Bullet()
